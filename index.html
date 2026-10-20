@@ -1,0 +1,2334 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Honda SH300i ABS — Manuale d'Uso e Manutenzione</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --red: #C41E3A;
+            --red-deep: #8B0000;
+            --red-soft: rgba(196, 30, 58, 0.08);
+            --paper: #F5F0E8;
+            --paper-dark: #E8E0D0;
+            --ink: #1A1A1A;
+            --ink-light: #4A4A4A;
+            --ink-muted: #8A8A8A;
+            --rule: #C8C0B4;
+            --rule-light: #E0DAD0;
+            --warm: #FAF8F4;
+            --amber: #B8860B;
+            --steel: #5A6A7A;
+            --mono: 'DM Mono', monospace;
+            --serif: 'DM Serif Display', Georgia, serif;
+            --sans: 'DM Sans', sans-serif;
+            --sb: 300px;
+            --hh: 64px
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 18px
+        }
+
+        body {
+            font-family: var(--sans);
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.75;
+            -webkit-font-smoothing: antialiased;
+            background-image: repeating-linear-gradient(0deg, transparent, transparent 35px, var(--rule-light) 35px, var(--rule-light) 36px);
+            background-size: 100% 36px;
+            background-attachment: fixed
+        }
+
+        @media (min-width: 1400px) {
+            html {
+                font-size: 19px
+            }
+
+            :root {
+                --sb: 320px
+            }
+        }
+
+        @media (min-width: 1800px) {
+            html {
+                font-size: 20px
+            }
+
+            :root {
+                --sb: 340px
+            }
+        }
+
+        @media (max-width: 1100px) {
+            html {
+                font-size: 17px
+            }
+
+            :root {
+                --sb: 260px
+            }
+        }
+
+        @media (max-width: 768px) {
+            html {
+                font-size: 16px
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--paper-dark)
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--rule);
+            border-radius: 3px
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--red)
+        }
+
+        #header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--hh);
+            background: rgba(245, 240, 232, 0.92);
+            backdrop-filter: blur(16px);
+            border-bottom: 2px solid var(--ink);
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+            z-index: 100;
+            gap: 16px
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            white-space: nowrap
+        }
+
+        .brand-mark {
+            width: 36px;
+            height: 36px;
+            background: var(--ink);
+            color: var(--paper);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            border-radius: 2px
+        }
+
+        .brand-text {
+            font-family: var(--serif);
+            font-size: 1.15rem;
+            font-style: italic;
+            color: var(--ink);
+            line-height: 1.1
+        }
+
+        .brand-text span {
+            display: block;
+            font-family: var(--mono);
+            font-size: 0.55rem;
+            font-style: normal;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--ink-muted);
+            margin-top: 2px
+        }
+
+        #search-wrap {
+            flex: 1;
+            max-width: 520px;
+            position: relative
+        }
+
+        #search {
+            width: 100%;
+            background: var(--warm);
+            border: 2px solid var(--rule);
+            border-radius: 8px;
+            padding: 10px 16px 10px 42px;
+            color: var(--ink);
+            font-family: var(--sans);
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s, background 0.2s
+        }
+
+        #search:focus {
+            border-color: var(--red);
+            box-shadow: 0 0 0 4px var(--red-soft);
+            background: #fff
+        }
+
+        #search::placeholder {
+            color: var(--ink-muted);
+            font-size: 0.88rem
+        }
+
+        #search-icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--ink-muted);
+            pointer-events: none;
+            width: 18px;
+            height: 18px
+        }
+
+        #search-results {
+            position: absolute;
+            top: calc(100% + 6px);
+            left: 0;
+            right: 0;
+            background: var(--warm);
+            border: 1.5px solid var(--rule);
+            border-radius: 8px;
+            max-height: 400px;
+            overflow-y: auto;
+            display: none;
+            z-index: 200;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15)
+        }
+
+        #search-results.active {
+            display: block;
+            animation: searchDrop 0.15s ease-out
+        }
+
+        @keyframes searchDrop {
+            from {
+                opacity: 0;
+                transform: translateY(-4px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        .result-item {
+            padding: 12px 16px;
+            cursor: pointer;
+            border-bottom: 1px solid var(--rule-light);
+            font-size: 0.88rem;
+            transition: background 0.15s
+        }
+
+        .result-item:last-child {
+            border-bottom: none
+        }
+
+        .result-item:hover {
+            background: var(--paper-dark)
+        }
+
+        .result-section {
+            color: var(--red);
+            font-size: 0.68rem;
+            font-family: var(--mono);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 3px
+        }
+
+        .no-results {
+            padding: 16px;
+            color: var(--ink-muted);
+            text-align: center;
+            font-size: 0.88rem
+        }
+
+        #toggle-nav {
+            display: none;
+            background: none;
+            border: 1.5px solid var(--rule);
+            color: var(--ink);
+            padding: 6px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem
+        }
+
+        #sidebar {
+            position: fixed;
+            top: var(--hh);
+            left: 0;
+            width: var(--sb);
+            height: calc(100vh - var(--hh));
+            background: var(--paper);
+            border-right: 1px solid var(--rule);
+            overflow-y: auto;
+            padding: 16px 0;
+            z-index: 90;
+            transition: transform 0.3s ease
+        }
+
+        #sidebar::-webkit-scrollbar {
+            width: 3px
+        }
+
+        .nav-sec {
+            margin-bottom: 8px
+        }
+
+        .nav-sec-title {
+            padding: 8px 16px 4px;
+            font-family: var(--mono);
+            font-size: 0.55rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--ink-muted);
+            font-weight: 500;
+            border-bottom: 1px solid var(--rule-light);
+            margin-bottom: 4px
+        }
+
+        .nav-item {
+            display: block;
+            padding: 5px 16px 5px 20px;
+            color: var(--ink-light);
+            text-decoration: none;
+            font-size: 0.78rem;
+            font-weight: 400;
+            transition: color 0.15s, background 0.15s;
+            border-left: 3px solid transparent;
+            line-height: 1.4
+        }
+
+        .nav-item:hover {
+            color: var(--ink);
+            background: var(--paper-dark)
+        }
+
+        .nav-item.active {
+            color: var(--red);
+            border-left-color: var(--red);
+            background: var(--red-soft);
+            font-weight: 500
+        }
+
+        .nav-sub {
+            padding-left: 32px;
+            font-size: 0.74rem;
+            color: var(--ink-muted)
+        }
+
+        .nav-sub:hover {
+            color: var(--ink-light)
+        }
+
+        #main {
+            margin-left: var(--sb);
+            margin-top: var(--hh);
+            min-height: calc(100vh - var(--hh))
+        }
+
+        #content {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 56px 72px 96px;
+            background: var(--warm);
+            box-shadow: 0 0 60px rgba(0, 0, 0, 0.04);
+            border-left: 1px solid var(--rule-light);
+            border-right: 1px solid var(--rule-light)
+        }
+
+        @media (min-width: 1500px) {
+            #content {
+                max-width: 1100px;
+                padding: 64px 88px 112px
+            }
+        }
+
+        @media (min-width: 1800px) {
+            #content {
+                max-width: 1280px;
+                padding: 72px 104px 128px
+            }
+        }
+
+        .section {
+            margin-bottom: 72px;
+            scroll-margin-top: calc(var(--hh) + 20px);
+            position: relative
+        }
+
+        .section::before {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--red);
+            margin-bottom: 16px
+        }
+
+        .section-title {
+            font-family: var(--serif);
+            font-size: 1.8rem;
+            font-style: italic;
+            color: var(--ink);
+            margin-bottom: 4px;
+            letter-spacing: -0.01em;
+            line-height: 1.2
+        }
+
+        .section-subtitle {
+            font-family: var(--serif);
+            font-size: 1.25rem;
+            font-style: italic;
+            color: var(--red);
+            margin: 32px 0 12px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid var(--rule-light)
+        }
+
+        .subsection-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin: 20px 0 10px;
+            color: var(--ink);
+            text-transform: uppercase;
+            letter-spacing: 0.06em
+        }
+
+        p {
+            margin-bottom: 14px;
+            color: var(--ink-light);
+            font-size: 0.88rem
+        }
+
+        strong,
+        b {
+            color: var(--ink);
+            font-weight: 600
+        }
+
+        ul,
+        ol {
+            margin: 10px 0 14px 20px;
+            color: var(--ink-light);
+            font-size: 0.88rem
+        }
+
+        li {
+            margin-bottom: 6px
+        }
+
+        li::marker {
+            color: var(--red)
+        }
+
+        .alert {
+            border-radius: 4px;
+            padding: 16px 20px;
+            margin: 18px 0;
+            font-size: 0.85rem;
+            line-height: 1.55;
+            border: 1px solid;
+            position: relative
+        }
+
+        .alert::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            border-radius: 4px 0 0 4px
+        }
+
+        .alert-danger {
+            background: rgba(196, 30, 58, 0.04);
+            border-color: rgba(196, 30, 58, 0.2);
+            color: var(--red-deep)
+        }
+
+        .alert-danger::before {
+            background: var(--red)
+        }
+
+        .alert-warning {
+            background: rgba(184, 134, 11, 0.06);
+            border-color: rgba(184, 134, 11, 0.25);
+            color: #8B6914
+        }
+
+        .alert-warning::before {
+            background: var(--amber)
+        }
+
+        .alert-info {
+            background: rgba(90, 106, 122, 0.06);
+            border-color: rgba(90, 106, 122, 0.2);
+            color: var(--steel)
+        }
+
+        .alert-info::before {
+            background: var(--steel)
+        }
+
+        .alert-title {
+            font-weight: 700;
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 6px
+        }
+
+        .table-wrap {
+            overflow-x: auto;
+            margin: 18px 0;
+            border-radius: 4px;
+            border: 1px solid var(--rule)
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.82rem
+        }
+
+        th {
+            background: var(--paper-dark);
+            color: var(--ink);
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 500;
+            padding: 10px 14px;
+            text-align: left;
+            border-bottom: 2px solid var(--rule)
+        }
+
+        td {
+            padding: 9px 14px;
+            border-bottom: 1px solid var(--rule-light);
+            color: var(--ink-light)
+        }
+
+        tr:last-child td {
+            border-bottom: none
+        }
+
+        tr:hover td {
+            background: rgba(0, 0, 0, 0.02)
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            background: var(--rule);
+            border: 1px solid var(--rule);
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 18px 0
+        }
+
+        .spec-label {
+            background: var(--paper);
+            padding: 10px 14px;
+            font-size: 0.78rem;
+            color: var(--ink-muted);
+            font-weight: 500
+        }
+
+        .spec-value {
+            background: var(--warm);
+            padding: 10px 14px;
+            font-size: 0.82rem;
+            color: var(--ink);
+            font-family: var(--mono);
+            font-size: 0.76rem
+        }
+
+        .steps {
+            counter-reset: step;
+            margin: 18px 0
+        }
+
+        .step {
+            position: relative;
+            padding: 16px 16px 16px 56px;
+            background: var(--warm);
+            border: 1px solid var(--rule-light);
+            border-radius: 4px;
+            margin-bottom: 6px;
+            font-size: 0.85rem;
+            color: var(--ink-light)
+        }
+
+        .step::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 28px;
+            height: 28px;
+            background: var(--ink);
+            color: var(--paper);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            font-weight: 500
+        }
+
+        .manual-img {
+            margin: 24px 0;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid var(--rule);
+            background: #fff;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06)
+        }
+
+        .manual-img img {
+            width: 100%;
+            height: auto;
+            display: block
+        }
+
+        .manual-img .img-caption {
+            padding: 8px 14px;
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--ink-muted);
+            border-top: 1px solid var(--rule-light);
+            background: var(--paper)
+        }
+
+        .img-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin: 18px 0
+        }
+
+        .img-row .manual-img {
+            margin: 0
+        }
+
+        .diagram {
+            background: var(--warm);
+            border: 1px solid var(--rule);
+            border-radius: 4px;
+            padding: 24px;
+            margin: 18px 0
+        }
+
+        .diagram-title {
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--ink-muted);
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--rule-light)
+        }
+
+        .diagram-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 10px
+        }
+
+        .diagram-item {
+            background: var(--paper);
+            border: 1px solid var(--rule-light);
+            border-radius: 4px;
+            padding: 12px 8px;
+            font-size: 0.75rem;
+            text-align: center
+        }
+
+        .diagram-item .num {
+            font-family: var(--mono);
+            color: var(--red);
+            font-weight: 500;
+            font-size: 0.85rem;
+            display: block;
+            margin-bottom: 4px
+        }
+
+        .diagram-item .label {
+            color: var(--ink-light);
+            font-size: 0.72rem
+        }
+
+        .maint-header {
+            background: var(--ink);
+            color: var(--paper);
+            padding: 24px 28px;
+            border-radius: 4px;
+            margin-bottom: 24px
+        }
+
+        .maint-header h3 {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            margin-bottom: 10px;
+            opacity: 0.85;
+            color: var(--paper)
+        }
+
+        .maint-header .legend {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            color: var(--paper)
+        }
+
+        .maint-header .legend span {
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
+
+        .maint-header .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            flex-shrink: 0
+        }
+
+        .maint-header .dot-red {
+            background: var(--red)
+        }
+
+        .maint-header .dot-ink {
+            background: var(--paper);
+            border: 2px solid var(--paper)
+        }
+
+        #footer {
+            border-top: 2px solid var(--ink);
+            padding: 32px 40px;
+            margin-left: var(--sb);
+            text-align: center;
+            color: var(--ink-muted);
+            font-size: 0.78rem;
+            background: var(--paper)
+        }
+
+        #footer a {
+            color: var(--red);
+            text-decoration: none
+        }
+
+        #overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 85
+        }
+
+        #overlay.active {
+            display: block
+        }
+
+        @media(max-width:1200px) {
+            :root {
+                --sb: 260px
+            }
+
+            #content {
+                max-width: 100%;
+                padding: 40px 48px 80px
+            }
+        }
+
+        @media(max-width:1023px) and (min-width:769px) {
+            #search-wrap {
+                max-width: 340px
+            }
+
+            #search {
+                font-size: 0.88rem;
+                padding: 9px 14px 9px 38px
+            }
+
+            #content {
+                max-width: 100%;
+                padding: 36px 40px 72px
+            }
+        }
+
+        @media(max-width:900px) {
+            :root {
+                --sb: 240px
+            }
+
+            #content {
+                padding: 32px 28px 64px
+            }
+
+            #hero>div {
+                flex-direction: column;
+                padding: 32px 28px;
+                gap: 24px
+            }
+
+            #hero>div>div:last-child {
+                width: 200px
+            }
+
+            .specs-grid {
+                grid-template-columns: 1fr
+            }
+
+            .img-row {
+                grid-template-columns: 1fr
+            }
+        }
+
+        @media(max-width:768px) {
+            #header {
+                padding: 0 12px;
+                gap: 8px;
+                height: auto;
+                min-height: 56px;
+                flex-wrap: wrap
+            }
+
+            .brand {
+                gap: 8px
+            }
+
+            .brand-mark {
+                width: 30px;
+                height: 30px;
+                font-size: 0.6rem
+            }
+
+            .brand-text {
+                font-size: 0.95rem
+            }
+
+            .brand-text span {
+                font-size: 0.45rem
+            }
+
+            #search-wrap {
+                order: 3;
+                flex: 1 1 100%;
+                max-width: 100%;
+                margin-bottom: 8px
+            }
+
+            #search {
+                padding: 12px 14px 12px 40px;
+                font-size: 1rem;
+                border-radius: 8px
+            }
+
+            #search::placeholder {
+                font-size: 0.9rem
+            }
+
+            #search-icon {
+                left: 12px;
+                width: 16px;
+                height: 16px
+            }
+
+            #search-results {
+                border-radius: 8px;
+                max-height: 300px
+            }
+
+            .result-item {
+                padding: 14px 14px
+            }
+
+            #sidebar {
+                transform: translateX(-100%);
+                width: 280px
+            }
+
+            #sidebar.open {
+                transform: translateX(0)
+            }
+
+            #main {
+                margin-left: 0
+            }
+
+            #content {
+                padding: 20px 14px 48px;
+                border: none;
+                box-shadow: none
+            }
+
+            #hero {
+                margin-left: 0 !important
+            }
+
+            #hero>div {
+                padding: 20px 14px !important;
+                gap: 14px !important;
+                flex-direction: column !important
+            }
+
+            #hero>div>div:first-child {
+                text-align: center
+            }
+
+            #hero>div>div:last-child {
+                width: 140px !important;
+                margin: 0 auto
+            }
+
+            #hero h2 {
+                font-size: 1.5rem !important
+            }
+
+            #hero p {
+                font-size: 0.75rem !important
+            }
+
+            #hero>div>div:first-child>div {
+                justify-content: center;
+                gap: 12px
+            }
+
+            #hero>div>div:first-child>div>div p:last-child {
+                font-size: 0.95rem !important
+            }
+
+            .specs-grid {
+                grid-template-columns: 1fr
+            }
+
+            .img-row {
+                grid-template-columns: 1fr
+            }
+
+            .maint-header .legend {
+                flex-direction: column;
+                gap: 8px
+            }
+
+            #footer {
+                margin-left: 0;
+                padding: 20px 14px
+            }
+
+            #toggle-nav {
+                display: block;
+                padding: 8px 10px;
+                font-size: 1.2rem
+            }
+
+            .section-title {
+                font-size: 1.35rem
+            }
+
+            .section::before {
+                width: 36px;
+                height: 2px
+            }
+
+            .subsection-title {
+                font-size: 0.88rem
+            }
+
+            p,
+            li {
+                font-size: 0.92rem;
+                line-height: 1.7
+            }
+
+            .alert {
+                padding: 12px 14px;
+                font-size: 0.85rem
+            }
+
+            .step {
+                padding: 12px 12px 12px 44px;
+                font-size: 0.88rem
+            }
+
+            .step::before {
+                width: 24px;
+                height: 24px;
+                font-size: 0.7rem;
+                left: 10px
+            }
+
+            .table-wrap {
+                font-size: 0.72rem;
+                border-radius: 4px;
+                -webkit-overflow-scrolling: touch
+            }
+
+            th,
+            td {
+                padding: 6px 6px
+            }
+
+            .manual-img .img-caption {
+                font-size: 0.55rem;
+                padding: 5px 8px
+            }
+
+            .diagram-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 6px
+            }
+
+            .diagram-item {
+                padding: 8px 4px;
+                font-size: 0.65rem
+            }
+
+            .spec-label,
+            .spec-value {
+                padding: 8px 10px;
+                font-size: 0.75rem
+            }
+
+            body {
+                background-image: none;
+                background: var(--warm)
+            }
+
+            .img-row {
+                grid-template-columns: 1fr
+            }
+
+            .section-title {
+                font-size: 1.4rem
+            }
+
+            body {
+                background-image: none;
+                background: var(--warm)
+            }
+        }
+
+        @media print {
+
+            #sidebar,
+            #header,
+            #overlay,
+            #footer,
+            .hero {
+                display: none !important
+            }
+
+            #main {
+                margin: 0
+            }
+
+            #content {
+                max-width: 100%;
+                padding: 20px;
+                box-shadow: none;
+                border: none
+            }
+
+            body {
+                background: #fff
+            }
+
+            .section {
+                break-inside: avoid
+            }
+
+            .manual-img {
+                break-inside: avoid
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header id="header">
+        <div class="brand">
+            <div class="brand-mark">H</div>
+            <div class="brand-text">SH300i ABS<br><span>Manuale d'Uso e Manutenzione</span></div>
+        </div>
+        <div id="search-wrap">
+            <svg id="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2">
+                <circle cx="11" cy="11" r="8" />
+                <path d="m21 21-4.35-4.35" />
+            </svg>
+            <input type="text" id="search" placeholder="Cerca nel manuale…" autocomplete="off">
+            <div id="search-results"></div>
+        </div>
+        <button id="toggle-nav" onclick="toggleSidebar()">&#9776;</button>
+    </header>
+
+    <nav id="sidebar">
+        <div class="nav-sec">
+            <div class="nav-sec-title">Generale</div>
+            <a class="nav-item" href="#info">Informazioni Importanti</a>
+            <a class="nav-item" href="#benvenuto">Benvenuti</a>
+        </div>
+        <div class="nav-sec">
+            <div class="nav-sec-title">Sicurezza</div>
+            <a class="nav-item" href="#sicurezza">Sicurezza dello Scooter</a>
+            <a class="nav-item nav-sub" href="#linee-guida">Linee guida</a>
+            <a class="nav-item nav-sub" href="#etichette">Etichette con simboli</a>
+            <a class="nav-item nav-sub" href="#precauzioni">Precauzioni di guida</a>
+            <a class="nav-item nav-sub" href="#accessori">Accessori e modifiche</a>
+            <a class="nav-item nav-sub" href="#carico">Carico</a>
+        </div>
+        <div class="nav-sec">
+            <div class="nav-sec-title">Descrizione</div>
+            <a class="nav-item" href="#ubicazione">Ubicazione Componenti</a>
+            <a class="nav-item nav-sub" href="#strumentazione">Strumentazione</a>
+            <a class="nav-item nav-sub" href="#interruttori">Interruttori</a>
+            <a class="nav-item nav-sub" href="#smart-key">Chiave SMART</a>
+        </div>
+        <div class="nav-sec">
+            <div class="nav-sec-title">Componenti</div>
+            <a class="nav-item" href="#componenti">Componenti Principali</a>
+            <a class="nav-item nav-sub" href="#sospensioni">Sospensioni</a>
+            <a class="nav-item nav-sub" href="#forcella">Forcella anteriore</a>
+            <a class="nav-item nav-sub" href="#freni">Freni / CBS / ABS</a>
+            <a class="nav-item nav-sub" href="#raffreddamento">Raffreddamento</a>
+            <a class="nav-item nav-sub" href="#carburante">Carburante</a>
+            <a class="nav-item nav-sub" href="#olio">Olio Motore</a>
+            <a class="nav-item nav-sub" href="#pneumatici">Pneumatici</a>
+        </div>
+        <div class="nav-sec">
+            <div class="nav-sec-title">Dotazioni</div>
+            <a class="nav-item" href="#dotazioni">Dotazioni Ausiliarie</a>
+        </div>
+        <div class="nav-sec">
+            <div class="nav-sec-title">Guida</div>
+            <a class="nav-item" href="#funzionamento">Funzionamento</a>
+            <a class="nav-item nav-sub" href="#controlli">Controlli pre-guida</a>
+            <a class="nav-item nav-sub" href="#avviamento">Avviamento</a>
+            <a class="nav-item nav-sub" href="#rodaggio">Rodaggio</a>
+            <a class="nav-item nav-sub" href="#parcheggio">Parcheggio</a>
+        </div>
+        <div class="nav-sec">
+            <div class="nav-sec-title">Manutenzione</div>
+            <a class="nav-item" href="#manutenzione">Manutenzione</a>
+            <a class="nav-item nav-sub" href="#scheda">Scheda manutenzione</a>
+            <a class="nav-item nav-sub" href="#filtro-aria">Filtro aria</a>
+            <a class="nav-item nav-sub" href="#olio-motore">Olio motore</a>
+            <a class="nav-item nav-sub" href="#candela">Candela</a>
+            <a class="nav-item nav-sub" href="#batteria">Batteria</a>
+            <a class="nav-item nav-sub" href="#fusibili">Fusibili</a>
+            <a class="nav-item nav-sub" href="#lampadine">Lampadine</a>
+        </div>
+        <div class="nav-sec">
+            <div class="nav-sec-title">Altro</div>
+            <a class="nav-item" href="#pulizia">Pulizia</a>
+            <a class="nav-item" href="#immagazzinamento">Immagazzinamento</a>
+            <a class="nav-item" href="#diagnostica">Diagnostica</a>
+            <a class="nav-item" href="#dati-tecnici">Dati Tecnici</a>
+            <a class="nav-item" href="#catalitico">Catalizzatore</a>
+        </div>
+    </nav>
+    <div id="overlay" onclick="toggleSidebar()"></div>
+
+    <!-- HERO -->
+    <div id="hero"
+        style="margin-left:var(--sb);margin-top:var(--hh);background:linear-gradient(135deg,#1a1a1a 0%,#2d2d2d 100%);padding:0;overflow:hidden;position:relative">
+        <div style="max-width:1100px;margin:0 auto;padding:56px 72px;display:flex;align-items:center;gap:56px">
+            <div style="flex:1">
+                <p
+                    style="font-family:var(--mono);font-size:0.65rem;text-transform:uppercase;letter-spacing:0.2em;color:var(--red);margin-bottom:12px">
+                    Honda Motor Co., Ltd.</p>
+                <h2
+                    style="font-family:var(--serif);font-size:2.8rem;font-style:italic;color:#fff;margin-bottom:8px;line-height:1.1">
+                    SH300i ABS</h2>
+                <p style="font-family:var(--mono);font-size:0.75rem;color:rgba(255,255,255,0.5);margin-bottom:20px">279
+                    cm³ · PGM-FI · CBS · ABS · Smart Key</p>
+                <div style="display:flex;gap:24px;flex-wrap:wrap">
+                    <div>
+                        <p
+                            style="font-family:var(--mono);font-size:0.6rem;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.1em">
+                            Potenza</p>
+                        <p style="font-size:1.1rem;color:#fff;font-weight:600">25.5 CV</p>
+                    </div>
+                    <div>
+                        <p
+                            style="font-family:var(--mono);font-size:0.6rem;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.1em">
+                            Cilindrata</p>
+                        <p style="font-size:1.1rem;color:#fff;font-weight:600">279 cm³</p>
+                    </div>
+                    <div>
+                        <p
+                            style="font-family:var(--mono);font-size:0.6rem;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.1em">
+                            Serbatoio</p>
+                        <p style="font-size:1.1rem;color:#fff;font-weight:600">9,1 L</p>
+                    </div>
+                    <div>
+                        <p
+                            style="font-family:var(--mono);font-size:0.6rem;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.1em">
+                            Peso</p>
+                        <p style="font-size:1.1rem;color:#fff;font-weight:600">153 kg</p>
+                    </div>
+                </div>
+            </div>
+            <div style="flex-shrink:0;width:340px">
+                <img src="images/honda-sh300.png" alt="Honda SH300i ABS"
+                    style="width:100%;height:auto;display:block;filter:drop-shadow(0 8px 24px rgba(0,0,0,0.5))">
+            </div>
+            <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--red)"></div>
+        </div>
+
+        <main id="main">
+            <div id="content">
+
+                <section class="section" id="info">
+                    <h1 class="section-title">Informazioni Importanti</h1>
+                    <p>Questo manuale deve essere considerato parte integrante dello scooter e deve essere allegato allo
+                        scooter nel caso venga rivenduto.</p>
+                    <p style="font-family:var(--mono);font-size:0.72rem;color:var(--ink-muted);">&copy; 2015 Honda Motor
+                        Co., Ltd. &mdash; Tutti i diritti riservati.</p>
+                    <div class="alert alert-danger">
+                        <div class="alert-title">Pericolo</div>La mancata osservanza di queste istruzioni <strong>causa
+                            la
+                            morte o gravi lesioni</strong>.
+                    </div>
+                    <div class="alert alert-warning">
+                        <div class="alert-title">Attenzione</div>La mancata osservanza di queste istruzioni
+                        <strong>pu&ograve; causare la morte o gravi lesioni</strong>.
+                    </div>
+                    <div class="alert alert-info">
+                        <div class="alert-title">Avvertenza</div>La mancata osservanza di queste istruzioni
+                        <strong>pu&ograve; causare lesioni</strong>.
+                    </div>
+                </section>
+
+                <section class="section" id="benvenuto">
+                    <h1 class="section-title">Benvenuti</h1>
+                    <p>Congratulazioni per aver acquistato un nuovo scooter Honda. L'aver scelto un Honda ti permette di
+                        entrare in una grande famiglia di clienti soddisfatti e che hanno dimostrato di riconoscere che
+                        Honda significa qualit&agrave; in ogni prodotto.</p>
+                    <p>Per garantire sicurezza e piacere di guida, leggere con attenzione questo manuale e seguire le
+                        raccomandazioni e le procedure in esso contenute.</p>
+                    <div class="manual-img"><img src="images/abs_page_002.png" alt="Benvenuti" loading="lazy">
+                        <div class="img-caption">Pagina 2 &mdash; Benvenuti</div>
+                    </div>
+                </section>
+
+                <section class="section" id="sicurezza">
+                    <h1 class="section-title">Sicurezza dello Scooter</h1>
+                    <h2 class="section-subtitle" id="linee-guida">Linee guida</h2>
+                    <ul>
+                        <li>Eseguire tutti i controlli regolari e di routine specificati nel presente manuale</li>
+                        <li>Spegnere il motore e tenere lontane scintille e fiamme prima di riempire il serbatoio</li>
+                        <li><strong>Non avviare il motore in ambienti chiusi</strong> &mdash; il monossido di carbonio
+                            &egrave; tossico e pu&ograve; essere mortale</li>
+                        <li>Indossare sempre un casco omologato e abbigliamento protettivo</li>
+                        <li>Verificare di essere in forma, concentrati e non sotto l'effetto di alcol o droghe</li>
+                        <li>Prendere il tempo necessario per imparare e fare pratica</li>
+                        <li>Rendersi visibili: abiti catarifrangenti, posizionamento corretto, segnalazione delle svolte
+                        </li>
+                        <li>Non guidare mai oltre le proprie capacit&agrave;</li>
+                    </ul>
+                    <div class="alert alert-danger">
+                        <div class="alert-title">Attenzione &mdash; Monossido di Carbonio</div>Il monossido di carbonio
+                        &egrave; un gas tossico. Respirarlo pu&ograve; causare la perdita dei sensi e il decesso. Non
+                        avviare mai lo scooter in un garage o in altri luoghi chiusi.
+                    </div>
+                    <h3 class="subsection-title">Abbigliamento protettivo</h3>
+                    <div class="diagram">
+                        <div class="diagram-title">Equipaggiamento Consigliato</div>
+                        <div class="diagram-grid">
+                            <div class="diagram-item"><span class="num">01</span><span class="label">Casco integrale
+                                    omologato</span></div>
+                            <div class="diagram-item"><span class="num">02</span><span class="label">Visiera /
+                                    Occhiali</span></div>
+                            <div class="diagram-item"><span class="num">03</span><span class="label">Guanti di
+                                    pelle</span>
+                            </div>
+                            <div class="diagram-item"><span class="num">04</span><span class="label">Stivali
+                                    antiscivolo</span></div>
+                            <div class="diagram-item"><span class="num">05</span><span class="label">Giacca
+                                    riflettente</span></div>
+                            <div class="diagram-item"><span class="num">06</span><span class="label">Pantaloni
+                                    resistenti</span></div>
+                        </div>
+                    </div>
+                    <div class="manual-img"><img src="images/abs_page_011.png" alt="Abbigliamento" loading="lazy">
+                        <div class="img-caption">Pagina 11 &mdash; Precauzioni sicurezza</div>
+                    </div>
+                </section>
+
+                <section class="section" id="etichette">
+                    <h1 class="section-title">Etichette con Simboli</h1>
+                    <p>Le etichette segnalano potenziali rischi o forniscono importanti informazioni di sicurezza. Non
+                        rimuoverle.</p>
+                    <div class="img-row">
+                        <div class="manual-img"><img src="images/abs_page_006.png" alt="Etichette" loading="lazy">
+                            <div class="img-caption">Pag. 6</div>
+                        </div>
+                        <div class="manual-img"><img src="images/abs_page_007.png" alt="Simboli" loading="lazy">
+                            <div class="img-caption">Pag. 7</div>
+                        </div>
+                    </div>
+                    <div class="img-row">
+                        <div class="manual-img"><img src="images/abs_page_008.png" alt="Batteria" loading="lazy">
+                            <div class="img-caption">Pag. 8 &mdash; Batteria</div>
+                        </div>
+                        <div class="manual-img"><img src="images/abs_page_009.png" alt="Accessori" loading="lazy">
+                            <div class="img-caption">Pag. 9 &mdash; Accessori/Carico</div>
+                        </div>
+                    </div>
+                    <div class="img-row">
+                        <div class="manual-img"><img src="images/abs_page_012.png" alt="Pneumatici" loading="lazy">
+                            <div class="img-caption">Pag. 12 &mdash; Pneumatici</div>
+                        </div>
+                        <div class="manual-img"><img src="images/abs_page_010.png" alt="Limiti" loading="lazy">
+                            <div class="img-caption">Pag. 10 &mdash; Limiti carico</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section" id="precauzioni">
+                    <h1 class="section-title">Precauzioni di Guida</h1>
+                    <h3 class="subsection-title">Rodaggio (primi 500 km)</h3>
+                    <ul>
+                        <li>Evitare partenze a pieno gas e brusche accelerazioni</li>
+                        <li>Evitare di frenare in modo brusco</li>
+                        <li>Guidare con prudenza</li>
+                    </ul>
+                    <h3 class="subsection-title">Freni</h3>
+                    <ul>
+                        <li>Evitare brusche frenate &mdash; possono ridurre la stabilit&agrave;</li>
+                        <li>Ridurre la velocit&agrave; prima delle curve</li>
+                        <li>Azionare contemporaneamente freno anteriore e posteriore</li>
+                    </ul>
+                    <h3 class="subsection-title">Sistema ABS</h3>
+                    <ul>
+                        <li>L'ABS non riduce lo spazio di frenata &mdash; in determinate circostanze pu&ograve;
+                            allungarlo
+                        </li>
+                        <li>L'ABS non entra in funzione a velocit&agrave; inferiori a <strong>10 km/h</strong></li>
+                        <li>La leva e il pedale del freno possono subire un leggero contraccolpo &egrave; normale</li>
+                    </ul>
+                    <div class="manual-img"><img src="images/abs_page_015.png" alt="Precauzioni" loading="lazy">
+                        <div class="img-caption">Pagina 12-13 &mdash; Precauzioni di guida</div>
+                    </div>
+                </section>
+
+                <section class="section" id="accessori">
+                    <h1 class="section-title">Accessori e Modifiche</h1>
+                    <div class="alert alert-warning">
+                        <div class="alert-title">Attenzione</div>Accessori o modifiche non corretti possono provocare
+                        incidenti. Utilizzare solo accessori progettati specificamente da Honda. Non trainare rimorchi o
+                        sidecar.
+                    </div>
+                    <div class="manual-img"><img src="images/abs_page_018.png" alt="Accessori" loading="lazy">
+                        <div class="img-caption">Pagina 15 &mdash; Accessori e modifiche</div>
+                    </div>
+                </section>
+
+                <section class="section" id="carico">
+                    <h1 class="section-title">Carico</h1>
+                    <div class="alert alert-warning">
+                        <div class="alert-title">Attenzione</div>Carichi eccessivi possono provocare incidenti.
+                        Rispettare
+                        tutti i limiti di carico.
+                    </div>
+                    <div class="specs-grid">
+                        <div class="spec-label">Capacit&agrave; massima</div>
+                        <div class="spec-value">180 kg</div>
+                        <div class="spec-label">Peso massimo bagaglio</div>
+                        <div class="spec-value">19 kg</div>
+                        <div class="spec-label">Scomparto centrale</div>
+                        <div class="spec-value">10,0 kg</div>
+                        <div class="spec-label">Vano anteriore</div>
+                        <div class="spec-value">0,5 kg</div>
+                        <div class="spec-label">Gancio portaoggetti</div>
+                        <div class="spec-value">1,5 kg</div>
+                        <div class="spec-label">Portapacchi posteriore</div>
+                        <div class="spec-value">3,0 kg</div>
+                    </div>
+                    <div class="manual-img"><img src="images/abs_page_019.png" alt="Carico" loading="lazy">
+                        <div class="img-caption">Pagina 16 &mdash; Carico</div>
+                    </div>
+                </section>
+
+                <section class="section" id="ubicazione">
+                    <h1 class="section-title">Ubicazione Componenti</h1>
+                    <div class="img-row">
+                        <div class="manual-img"><img src="images/abs_page_021.png" alt="Lato destro" loading="lazy">
+                            <div class="img-caption">Pag. 18 &mdash; Lato destro</div>
+                        </div>
+                        <div class="manual-img"><img src="images/abs_page_022.png" alt="Lato sinistro" loading="lazy">
+                            <div class="img-caption">Pag. 19 &mdash; Lato sinistro</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section" id="strumentazione">
+                    <h1 class="section-title">Strumentazione</h1>
+                    <div class="manual-img"><img src="images/abs_page_023.png" alt="Strumentazione" loading="lazy">
+                        <div class="img-caption">Pagina 20 &mdash; Strumentazione</div>
+                    </div>
+                    <div class="manual-img"><img src="images/abs_page_024.png" alt="Display" loading="lazy">
+                        <div class="img-caption">Pagina 21 &mdash; Display e spia cambio olio</div>
+                    </div>
+                    <div class="manual-img"><img src="images/abs_page_025.png" alt="Contachilometri" loading="lazy">
+                        <div class="img-caption">Pagina 22 &mdash; Contachilometri e consumo</div>
+                    </div>
+                    <h3 class="subsection-title">Spie</h3>
+                    <div class="table-wrap">
+                        <table>
+                            <tr>
+                                <th>Spia</th>
+                                <th>Significato</th>
+                                <th>Azione</th>
+                            </tr>
+                            <tr>
+                                <td>Abbaglianti</td>
+                                <td>Fari abbaglianti attivi</td>
+                                <td>&mdash;</td>
+                            </tr>
+                            <tr>
+                                <td>Bassa pressione olio</td>
+                                <td>Pressione insufficiente</td>
+                                <td>Fermarsi IMMEDIATAMENTE</td>
+                            </tr>
+                            <tr>
+                                <td>MIL PGM-FI</td>
+                                <td>Anomalia iniezione</td>
+                                <td>Concessionario</td>
+                            </tr>
+                            <tr>
+                                <td>ABS</td>
+                                <td>Guasto sistema ABS</td>
+                                <td>Concessionario (P94)</td>
+                            </tr>
+                            <tr>
+                                <td>Chiave SMART</td>
+                                <td>Verifica chiave</td>
+                                <td>Vedi P96</td>
+                            </tr>
+                            <tr>
+                                <td>Cambio olio</td>
+                                <td>Intervallo manutenzione</td>
+                                <td>Azzerare dopo cambio</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <h3 class="subsection-title">Impostazione Orologio</h3>
+                    <div class="steps">
+                        <div class="step">Portare il commutatore di accensione su (On)</div>
+                        <div class="step">Tenere premuto SEL + SET &mdash; la cifra delle ore lampeggia</div>
+                        <div class="step">Premere SEL per impostare l'ora (tenere premuto = avanzamento rapido)</div>
+                        <div class="step">Premere SET &mdash; i minuti lampeggiano</div>
+                        <div class="step">Premere SEL per impostare i minuti</div>
+                        <div class="step">Premere SET per completare</div>
+                    </div>
+                    <div class="manual-img"><img src="images/abs_page_027.png" alt="Orologio" loading="lazy">
+                        <div class="img-caption">Pagina 24 &mdash; Impostazione orologio</div>
+                    </div>
+                </section>
+
+                <section class="section" id="interruttori">
+                    <h1 class="section-title">Interruttori</h1>
+                    <div class="manual-img"><img src="images/abs_page_029.png" alt="Interruttori" loading="lazy">
+                        <div class="img-caption">Pagina 26 &mdash; Interruttori e spie</div>
+                    </div>
+                    <div class="manual-img"><img src="images/abs_page_032.png" alt="Bloccasterzo" loading="lazy">
+                        <div class="img-caption">Pagina 29 &mdash; Bloccasterzo</div>
+                    </div>
+                    <h3 class="subsection-title">Commutatore di Accensione</h3>
+                    <div class="specs-grid">
+                        <div class="spec-label">LOCK</div>
+                        <div class="spec-value">Sterzo bloccato. Chiave estraibile. Motore e luci OFF.</div>
+                        <div class="spec-label">Off</div>
+                        <div class="spec-value">Motore e luci OFF. Chiave estraibile.</div>
+                        <div class="spec-label">On</div>
+                        <div class="spec-value">Motore e luci ON. Chiave NON estraibile.</div>
+                        <div class="spec-label">SEAT</div>
+                        <div class="spec-value">Aziona l'apertura della sella.</div>
+                    </div>
+                    <h3 class="subsection-title">Sistema di Risposta</h3>
+                    <p>Premendo il pulsante di risposta sulla chiave SMART con il commutatore su Off o LOCK, lo scooter
+                        indica la posizione facendo lampeggiare gli indicatori e illuminando l'anello del commutatore
+                        per ~1
+                        minuto.</p>
+                    <div class="manual-img"><img src="images/abs_page_030.png" alt="Risposta" loading="lazy">
+                        <div class="img-caption">Pagina 30 &mdash; Sistema di risposta</div>
+                    </div>
+                </section>
+
+                <section class="section" id="smart-key">
+                    <h1 class="section-title">Chiave SMART Honda</h1>
+                    <p>Il sistema chiave SMART Honda consente di azionare l'interruttore principale senza inserire la
+                        chiave. Il sistema esegue un'autenticazione a due vie tra lo scooter e la chiave.</p>
+                    <h3 class="subsection-title">Attivazione / Disattivazione</h3>
+                    <div class="steps">
+                        <div class="step">Premere il pulsante ON/OFF finch&eacute; il colore del LED non cambia</div>
+                        <div class="step">Per verificare: premere leggermente ON/OFF &rarr; LED verde = attivo, rosso =
+                            disattivato</div>
+                    </div>
+                    <div class="alert alert-info">
+                        <div class="alert-title">Avviso</div>Quando la batteria dello scooter &egrave; scarica, il
+                        sistema
+                        di risposta potrebbe non funzionare. Il sistema pu&ograve; influire su stimolatori cardiaci.
+                    </div>
+                    <div class="img-row">
+                        <div class="manual-img"><img src="images/abs_page_033.png" alt="SMART" loading="lazy">
+                            <div class="img-caption">Pag. 33</div>
+                        </div>
+                        <div class="manual-img"><img src="images/abs_page_037.png" alt="Raggio" loading="lazy">
+                            <div class="img-caption">Pag. 34 &mdash; Raggio d'azione</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section" id="componenti">
+                    <h1 class="section-title">Componenti Principali</h1>
+                    <h2 class="section-subtitle" id="sospensioni">Sospensioni</h2>
+                    <p>Il registro precarico della molla della sospensione posteriore ha <strong>5 posizioni</strong>.
+                        Standard: <strong>3</strong>. Posizioni 1-2 per carichi leggeri, 4-5 per carichi pesanti.</p>
+                    <div class="manual-img"><img src="images/abs_page_087.png" alt="Sospensioni" loading="lazy">
+                        <div class="img-caption">Pagina 87 &mdash; Regolazione sospensione</div>
+                    </div>
+
+                    <h2 class="section-subtitle" id="forcella">Forcella Anteriore</h2>
+                    <p>La forcella anteriore &egrave; del tipo telescopio idraulico. Non richiede regolazioni
+                        periodiche. In caso di perdite di liquido o funzionamento anomalo, far controllare il sistema
+                        presso un concessionario Honda.</p>
+                    <div class="specs-grid">
+                        <div class="spec-label">Inclinazione piantone sterzo</div>
+                        <div class="spec-value">27&deg; 30'</div>
+                        <div class="spec-label">Avancorsa</div>
+                        <div class="spec-value">98 mm</div>
+                        <div class="spec-label">Distanza minima da terra</div>
+                        <div class="spec-value">130 mm</div>
+                        <div class="spec-label">Raggio minimo di sterzata</div>
+                        <div class="spec-value">2,2 m</div>
+                    </div>
+                    <div class="manual-img"><img src="images/abs_page_021.png" alt="Forcella anteriore" loading="lazy">
+                        <div class="img-caption">Pagina 18 &mdash; Vista componenti (forcella visibile)</div>
+                    </div>
+
+                    <h2 class="section-subtitle" id="freni">Freni / CBS / ABS</h2>
+                    <p>Sistema Frenante Combinato (CBS): tirando la leva del freno posteriore si attiva il freno
+                        posteriore
+                        e parzialmente quello anteriore. Per frenata completa, tirare entrambe le leve.</p>
+                    <div class="specs-grid">
+                        <div class="spec-label">Liquido freni</div>
+                        <div class="spec-value">Honda DOT 4</div>
+                        <div class="spec-label">Livello</div>
+                        <div class="spec-value">Sopra segno LOWER</div>
+                    </div>
+                    <div class="manual-img"><img src="images/abs_page_082.png" alt="Freni" loading="lazy">
+                        <div class="img-caption">Pagina 82 &mdash; Controllo freni</div>
+                    </div>
+                    <h2 class="section-subtitle" id="raffreddamento">Liquido di Raffreddamento</h2>
+                    <p>Miscela 50/50 antigelo e acqua distillata. Capacit&agrave;: 1,10 litri.</p>
+                    <div class="alert alert-danger">
+                        <div class="alert-title">Pericolo</div>Non aprire quando &egrave; caldo. Il contatto con
+                        refrigerante bollente provoca gravi ustioni.
+                    </div>
+                    <div class="manual-img"><img src="images/abs_page_080.png" alt="Raffreddamento" loading="lazy">
+                        <div class="img-caption">Pagina 80 &mdash; Liquido raffreddamento</div>
+                    </div>
+                    <h2 class="section-subtitle" id="carburante">Carburante</h2>
+                    <div class="specs-grid">
+                        <div class="spec-label">Capacit&agrave; serbatoio</div>
+                        <div class="spec-value">9,10 litri</div>
+                        <div class="spec-label">Tipo</div>
+                        <div class="spec-value">Benzina senza piombo, octano &ge; 91</div>
+                        <div class="spec-label">Residuo (lancetta su E)</div>
+                        <div class="spec-value">&asymp; 1,7 litri</div>
+                    </div>
+                    <div class="alert alert-danger">
+                        <div class="alert-title">Attenzione</div>La benzina &egrave; molto infiammabile ed esplosiva.
+                        Spegnere il motore, tenersi lontani da fiamme. Fare benzina solo all'aperto.
+                    </div>
+                    <div class="manual-img"><img src="images/abs_page_044.png" alt="Carburante" loading="lazy">
+                        <div class="img-caption">Pagina 44 &mdash; Rifornimento</div>
+                    </div>
+                    <h2 class="section-subtitle" id="olio">Olio Motore</h2>
+                    <div class="specs-grid">
+                        <div class="spec-label">Capacit&agrave; (scarico)</div>
+                        <div class="spec-value">1,2 litri</div>
+                        <div class="spec-label">Capacit&agrave; (scarico + filtro)</div>
+                        <div class="spec-value">1,4 litri</div>
+                        <div class="spec-label">Capacit&agrave; (smontaggio)</div>
+                        <div class="spec-value">1,7 litri</div>
+                    </div>
+                    <div class="img-row">
+                        <div class="manual-img"><img src="images/abs_page_076.png" alt="Olio" loading="lazy">
+                            <div class="img-caption">Pag. 76 &mdash; Livello olio</div>
+                        </div>
+                        <div class="manual-img"><img src="images/abs_page_078.png" alt="Filtro olio" loading="lazy">
+                            <div class="img-caption">Pag. 78 &mdash; Scarico e filtro</div>
+                        </div>
+                    </div>
+                    <h2 class="section-subtitle" id="pneumatici">Pneumatici</h2>
+                    <div class="specs-grid">
+                        <div class="spec-label">Anteriore</div>
+                        <div class="spec-value">110/70-16M/C 52S Tubeless</div>
+                        <div class="spec-label">Posteriore</div>
+                        <div class="spec-value">130/70R16M/C 61S Tubeless Radiale</div>
+                        <div class="spec-label">Pressione ant.</div>
+                        <div class="spec-value">200 kPa (2,00 kgf/cm&sup2;)</div>
+                        <div class="spec-label">Pressione post.</div>
+                        <div class="spec-value">250 kPa (2,50 kgf/cm&sup2;)</div>
+                        <div class="spec-label">Marca</div>
+                        <div class="spec-value">BRIDGESTONE / METZELER</div>
+                    </div>
+                    <div class="manual-img"><img src="images/abs_page_045.png" alt="Pneumatici" loading="lazy">
+                        <div class="img-caption">Pagina 45 &mdash; Pneumatici</div>
+                    </div>
+                </section>
+
+                <section class="section" id="dotazioni">
+                    <h1 class="section-title">Dotazioni Ausiliarie</h1>
+                    <div class="specs-grid">
+                        <div class="spec-label">Scomparto centrale</div>
+                        <div class="spec-value">Sotto sella &mdash; max 10 kg</div>
+                        <div class="spec-label">Scomparto anteriore</div>
+                        <div class="spec-value">max 0,5 kg</div>
+                        <div class="spec-label">Gancio portaoggetti</div>
+                        <div class="spec-value">max 1,5 kg</div>
+                        <div class="spec-label">Presa accessori</div>
+                        <div class="spec-value">12V</div>
+                    </div>
+                    <div class="img-row">
+                        <div class="manual-img"><img src="images/abs_page_048.png" alt="Scomparto centrale"
+                                loading="lazy">
+                            <div class="img-caption">Pag. 48</div>
+                        </div>
+                        <div class="manual-img"><img src="images/abs_page_049.png" alt="Scomparto anteriore"
+                                loading="lazy">
+                            <div class="img-caption">Pag. 49</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section" id="funzionamento">
+                    <h1 class="section-title">Funzionamento</h1>
+                    <h2 class="section-subtitle" id="controlli">Controlli Pre-Guida</h2>
+                    <ul>
+                        <li>Pneumatici &mdash; pressione, battistrada, danni</li>
+                        <li>Livelli fluidi &mdash; olio, raffreddamento, freni</li>
+                        <li>Freni &mdash; funzionamento, gioco leve</li>
+                        <li>Luci e segnalazioni</li>
+                        <li>Specchietti retrovisori</li>
+                        <li>Acceleratore &mdash; rotazione fluida, ritorno automatico</li>
+                    </ul>
+                    <h2 class="section-subtitle" id="avviamento">Avviamento</h2>
+                    <div class="steps">
+                        <div class="step">Avvicinare la chiave SMART allo scooter</div>
+                        <div class="step">Portare il commutatore su (On) &mdash; verificare che la spia SMART si spenga
+                        </div>
+                        <div class="step">Tenere premuta la leva del freno</div>
+                        <div class="step">Premere il pulsante di avviamento</div>
+                        <div class="step">Lasciare riscaldare per 1-2 minuti</div>
+                    </div>
+                    <h2 class="section-subtitle" id="rodaggio">Rodaggio</h2>
+                    <p>Primi <strong>500 km</strong>: evitare partenze a pieno gas, brusche accelerazioni e frenate.</p>
+                    <h2 class="section-subtitle" id="parcheggio">Parcheggio</h2>
+                    <div class="steps">
+                        <div class="step">Spegnere il motore</div>
+                        <div class="step">Abbassare il cavalletto laterale o centrale</div>
+                        <div class="step">Ruotare il manubrio completamente a sinistra</div>
+                        <div class="step">Portare il commutatore su LOCK, bloccarlo, portare via la chiave SMART</div>
+                    </div>
+                    <div class="manual-img"><img src="images/abs_page_016.png" alt="Parcheggio" loading="lazy">
+                        <div class="img-caption">Pagina 13 &mdash; Parcheggio</div>
+                    </div>
+                </section>
+
+                <!-- ═══════════════════════════════════════════════════════ -->
+                <!-- MANUTENZIONE -->
+                <!-- ═══════════════════════════════════════════════════════ -->
+                <section class="section" id="manutenzione">
+                    <h1 class="section-title">Manutenzione</h1>
+                    <div class="alert alert-danger">
+                        <div class="alert-title">Pericolo</div>La manutenzione deve essere effettuata solo presso un
+                        concessionario Honda. Una manutenzione non corretta pu&ograve; causare incidenti con conseguenti
+                        lesioni gravi o mortali.
+                    </div>
+
+                    <h2 class="section-subtitle" id="scheda">Scheda di Manutenzione Programmata</h2>
+
+                    <div class="maint-header">
+                        <h3>Legenda interventi</h3>
+                        <div class="legend">
+                            <span><span class="dot dot-ink"></span> <strong
+                                    style="font-size:0.85rem;color:#fff;">I</strong>
+                                = Controllare / Pulire / Regolare / Lubrificare</span>
+                            <span><span class="dot dot-red"></span> <strong
+                                    style="font-size:0.85rem;color:#fff;">R</strong>
+                                = Sostituire</span>
+                            <span><span class="dot dot-ink"></span> <strong
+                                    style="font-size:0.85rem;color:#fff;">C</strong>
+                                = Pulire</span>
+                        </div>
+                    </div>
+
+                    <p style="font-size:0.78rem;color:var(--ink-muted);margin-bottom:16px;font-family:var(--mono);">
+                        Intervalli basati su chilometraggio o tempo (il primo dei due che si verifica). Per km superiori
+                        ripetere agli intervalli stabiliti.</p>
+
+                    <div class="table-wrap">
+                        <table style="font-size:0.7rem;">
+                            <thead>
+                                <tr>
+                                    <th style="text-align:left;min-width:180px;">Intervento</th>
+                                    <th style="text-align:center;width:50px;">1.000 km</th>
+                                    <th style="text-align:center;width:50px;">12.000 km</th>
+                                    <th style="text-align:center;width:50px;">24.000 km</th>
+                                    <th style="text-align:center;width:50px;">36.000 km</th>
+                                    <th style="text-align:center;width:50px;">48.000 km</th>
+                                    <th style="text-align:center;width:60px;">2 anni</th>
+                                    <th style="text-align:center;width:60px;">3 anni</th>
+                                    <th style="text-align:center;width:40px;">Pag.</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="9"
+                                        style="background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:0.55rem;letter-spacing:0.12em;padding:5px 12px;">
+                                        MOTORE</td>
+                                </tr>
+                                <tr>
+                                    <td>Olio motore</td>
+                                    <td style="text-align:center;font-weight:700;color:var(--red);">R</td>
+                                    <td style="text-align:center;font-weight:700;color:var(--red);">R</td>
+                                    <td style="text-align:center;font-weight:700;color:var(--red);">R</td>
+                                    <td style="text-align:center;font-weight:700;color:var(--red);">R</td>
+                                    <td style="text-align:center;font-weight:700;color:var(--red);">R</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td style="text-align:center;">78</td>
+                                </tr>
+                                <tr>
+                                    <td>Filtro olio motore</td>
+                                    <td></td>
+                                    <td style="text-align:center;font-weight:700;color:var(--red);">R</td>
+                                    <td></td>
+                                    <td style="text-align:center;font-weight:700;color:var(--red);">R</td>
+                                    <td></td>
+                                    <td style="text-align:center;font-weight:700;color:var(--red);">R</td>
+                                    <td></td>
+                                    <td style="text-align:center;">78</td>
+                                </tr>
+                                <tr>
+                                    <td>Filtro dell'aria</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td style="text-align:center;font-weight:700;color:var(--red);">R</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td style="text-align:center;">67</td>
+                                </tr>
+                                <tr>
+                                    <td>Sfiato del basamento</td>
+                                    <td></td>
+                                    <td style="text-align:center;">C</td>
+                                    <td style="text-align:center;">C</td>
+                                    <td style="text-align:center;">C</td>
+                                    <td style="text-align:center;">C</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td style="text-align:center;">73</td>
+                                </tr>
+                                <tr>
+                                    <td>Candela</td>
+                                    <td></td>
+                                    <td style="text-align:center;">I</td>
+                                    <td></td>
+                                    <td style="text-align:center;font-weight:700;color:var(--red);">R</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td style="text-align:center;">74</td>
+                                </tr>
+                                <tr>
+                                    <td>Gioco valvole</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td style="text-align:center;">I</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td style="text-align:center;">-</td>
+                                </tr>
+                                <tr>
+                                    <td>Regime minimo motore</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td style="text-align:center;">-</td>
+                                </tr>
+                                <tr>
+                                    <td>Funzionamento acceleratore</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td style="text-align:center;">85</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="9"
+                                        style="background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:0.55rem;letter-spacing:0.12em;padding:5px 12px;">
+                                        RAFFREDDAMENTO</td>
+                                </tr>
+                                <tr>
+                                    <td>Liquido raffreddamento</td>
+                                    <td></td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td></td>
+                                    <td style="text-align:center;font-weight:700;color:var(--red);">R</td>
+                                    <td style="text-align:center;">80</td>
+                                </tr>
+                                <tr>
+                                    <td>Sistema raffreddamento</td>
+                                    <td></td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td style="text-align:center;">-</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="9"
+                                        style="background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:0.55rem;letter-spacing:0.12em;padding:5px 12px;">
+                                        CARBURANTE E ALIMENTAZIONE</td>
+                                </tr>
+                                <tr>
+                                    <td>Condotti carburante</td>
+                                    <td></td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td style="text-align:center;">-</td>
+                                </tr>
+                                <tr>
+                                    <td>Filtro aria carter cinghia</td>
+                                    <td></td>
+                                    <td style="text-align:center;">C</td>
+                                    <td style="text-align:center;">C</td>
+                                    <td style="text-align:center;">C</td>
+                                    <td style="text-align:center;">C</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td style="text-align:center;">-</td>
+                                </tr>
+                                <tr>
+                                    <td>Impianto aria secondario</td>
+                                    <td></td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td style="text-align:center;">-</td>
+                                </tr>
+                                <tr>
+                                    <td>Impianto controllo emissioni</td>
+                                    <td></td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td style="text-align:center;">-</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="9"
+                                        style="background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:0.55rem;letter-spacing:0.12em;padding:5px 12px;">
+                                        TRASMISSIONE</td>
+                                </tr>
+                                <tr>
+                                    <td>Cinghia di trasmissione</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td style="text-align:center;font-weight:700;color:var(--red);">R</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td style="text-align:center;">-</td>
+                                </tr>
+                                <tr>
+                                    <td>Olio trasmissione finale</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td style="text-align:center;font-weight:700;color:var(--red);">R</td>
+                                    <td></td>
+                                    <td style="text-align:center;">-</td>
+                                </tr>
+                                <tr>
+                                    <td>Usura ganasce frizione</td>
+                                    <td></td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td style="text-align:center;">-</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="9"
+                                        style="background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:0.55rem;letter-spacing:0.12em;padding:5px 12px;">
+                                        FRENI</td>
+                                </tr>
+                                <tr>
+                                    <td>Liquido freni</td>
+                                    <td></td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;font-weight:700;color:var(--red);">R</td>
+                                    <td></td>
+                                    <td style="text-align:center;">82</td>
+                                </tr>
+                                <tr>
+                                    <td>Usura pastiglie freni</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td style="text-align:center;">83</td>
+                                </tr>
+                                <tr>
+                                    <td>Impianto frenante</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td style="text-align:center;">58</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="9"
+                                        style="background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:0.55rem;letter-spacing:0.12em;padding:5px 12px;">
+                                        TELAIO E STERZO</td>
+                                </tr>
+                                <tr>
+                                    <td>Orientamento fari</td>
+                                    <td></td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td style="text-align:center;">86</td>
+                                </tr>
+                                <tr>
+                                    <td>Cavalletto laterale</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td style="text-align:center;">84</td>
+                                </tr>
+                                <tr>
+                                    <td>Sospensioni</td>
+                                    <td></td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td style="text-align:center;">-</td>
+                                </tr>
+                                <tr>
+                                    <td>Dadi, bulloni, fissaggi</td>
+                                    <td></td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td style="text-align:center;">-</td>
+                                </tr>
+                                <tr>
+                                    <td>Ruote / Pneumatici</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td style="text-align:center;">64</td>
+                                </tr>
+                                <tr>
+                                    <td>Cuscinetti testa sterzo</td>
+                                    <td></td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td style="text-align:center;">-</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="9"
+                                        style="background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:0.55rem;letter-spacing:0.12em;padding:5px 12px;">
+                                        IMPIANTO ELETTRICO</td>
+                                </tr>
+                                <tr>
+                                    <td>Fari / Avvisatore acustico</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td style="text-align:center;">-</td>
+                                </tr>
+                                <tr>
+                                    <td>Interruttore arresto motore</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td style="text-align:center;">I</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td style="text-align:center;">-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="alert alert-info" style="margin-top:16px;">
+                        <div class="alert-title">Note importanti</div>
+                        <ul style="margin:8px 0 0 16px;font-size:0.78rem;">
+                            <li><strong>Nota 2:</strong> Filtro aria: manutenzione pi&ugrave; frequente in zone umide o
+                                polverose.</li>
+                            <li><strong>Nota 3:</strong> Sfiato basamento: pulizia pi&ugrave; frequente se si guida
+                                sotto la
+                                pioggia o con acceleratore al massimo.</li>
+                            <li><strong>Nota 4:</strong> Liquido raffreddamento e freni: sostituzione richiede adeguate
+                                competenze meccaniche &mdash; affidarsi al concessionario.</li>
+                        </ul>
+                    </div>
+
+                    <div class="img-row" style="margin-top:20px;">
+                        <div class="manual-img"><img src="images/abs_page_056.png" alt="Scheda" loading="lazy">
+                            <div class="img-caption">Pag. 52-53 &mdash; Scheda originale</div>
+                        </div>
+                        <div class="manual-img"><img src="images/abs_page_057.png" alt="Scheda" loading="lazy">
+                            <div class="img-caption">Pag. 54 &mdash; Scheda originale</div>
+                        </div>
+                    </div>
+                    <div class="manual-img"><img src="images/abs_page_058.png" alt="Scheda" loading="lazy">
+                        <div class="img-caption">Pagina 55 &mdash; Scheda originale (continua)</div>
+                    </div>
+
+                    <h2 class="section-subtitle" id="filtro-aria">Filtro dell'Aria</h2>
+                    <p>Sostituire ogni <strong>18.000 km</strong>. Manutenzione pi&ugrave; frequente in condizioni
+                        polverose. Un filtro intasato riduce le prestazioni e aumenta i consumi.</p>
+                    <div class="manual-img"><img src="images/abs_page_067.png" alt="Filtro aria" loading="lazy">
+                        <div class="img-caption">Pagina 67 &mdash; Filtro dell'aria</div>
+                    </div>
+
+                    <h2 class="section-subtitle" id="olio-motore">Olio Motore e Filtro</h2>
+                    <div class="specs-grid">
+                        <div class="spec-label">Cambio olio</div>
+                        <div class="spec-value">Ogni 12.000 km (primo a 1.000)</div>
+                        <div class="spec-label">Filtro olio</div>
+                        <div class="spec-value">Ogni 12.000 km</div>
+                        <div class="spec-label">Olio consigliato</div>
+                        <div class="spec-value">SAE 10W-30, API SG+, JASO T903 MB</div>
+                        <div class="spec-label">Capacit&agrave; (scarico)</div>
+                        <div class="spec-value">1,2 litri</div>
+                    </div>
+                    <div class="manual-img"><img src="images/abs_page_077.png" alt="Olio" loading="lazy">
+                        <div class="img-caption">Pagina 77 &mdash; Olio motore</div>
+                    </div>
+
+                    <h2 class="section-subtitle" id="candela">Candela</h2>
+                    <div class="specs-grid">
+                        <div class="spec-label">Standard</div>
+                        <div class="spec-value">NGK LMAR8A-9</div>
+                        <div class="spec-label">Distanza elettrodi</div>
+                        <div class="spec-value">0,80 &mdash; 0,90 mm</div>
+                        <div class="spec-label">Sostituzione</div>
+                        <div class="spec-value">Ogni 24.000 km</div>
+                    </div>
+                    <div class="manual-img"><img src="images/abs_page_074.png" alt="Candela" loading="lazy">
+                        <div class="img-caption">Pagina 74 &mdash; Candela</div>
+                    </div>
+
+                    <h2 class="section-subtitle" id="batteria">Batteria</h2>
+                    <div class="specs-grid">
+                        <div class="spec-label">Tipo</div>
+                        <div class="spec-value">12V &mdash; 11Ah (sigillata, no manutenzione)</div>
+                    </div>
+                    <div class="alert alert-danger">
+                        <div class="alert-title">Pericolo</div>Tenere la batteria lontana da fiamme. Produce un gas
+                        esplosivo. Indossare occhiali e guanti isolanti. Non rimuovere le guarnizioni dei tappi.
+                    </div>
+                    <div class="manual-img"><img src="images/abs_page_069.png" alt="Batteria" loading="lazy">
+                        <div class="img-caption">Pagina 69 &mdash; Batteria</div>
+                    </div>
+
+                    <h2 class="section-subtitle" id="fusibili">Fusibili</h2>
+                    <div class="specs-grid">
+                        <div class="spec-label">Principale</div>
+                        <div class="spec-value">30A</div>
+                        <div class="spec-label">Altri</div>
+                        <div class="spec-value">10A, 15A</div>
+                    </div>
+                    <div class="alert alert-warning">
+                        <div class="alert-title">Avvertenza</div>Non sostituire con fusibili di amperaggio superiore. Se
+                        un
+                        fusibile si brucia ripetutamente, controllare l'impianto elettrico.
+                    </div>
+                    <div class="manual-img"><img src="images/abs_page_111.png" alt="Fusibili" loading="lazy">
+                        <div class="img-caption">Pagina 111 &mdash; Fusibili</div>
+                    </div>
+
+                    <h2 class="section-subtitle" id="lampadine">Sostituzione Lampadine</h2>
+                    <div class="table-wrap">
+                        <table>
+                            <tr>
+                                <th>Lampadina</th>
+                                <th>Potenza</th>
+                            </tr>
+                            <tr>
+                                <td>Faro anteriore</td>
+                                <td>12V &mdash; 55/60W</td>
+                            </tr>
+                            <tr>
+                                <td>Luce freno / Fanale</td>
+                                <td>12V &mdash; 21/5W</td>
+                            </tr>
+                            <tr>
+                                <td>Segnale di direzione (&times;4)</td>
+                                <td>12V &mdash; 21W</td>
+                            </tr>
+                            <tr>
+                                <td>Luci posizione (&times;2)</td>
+                                <td>12V &mdash; 5W</td>
+                            </tr>
+                            <tr>
+                                <td>Luce targa</td>
+                                <td>12V &mdash; 5W</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="manual-img"><img src="images/abs_page_105.png" alt="Lampadine" loading="lazy">
+                        <div class="img-caption">Pagina 105 &mdash; Lampadine</div>
+                    </div>
+                </section>
+
+                <!-- PULIZIA -->
+                <section class="section" id="pulizia">
+                    <h1 class="section-title">Pulizia</h1>
+                    <ul>
+                        <li>Lavare con acqua e sapone neutro</li>
+                        <li>Non usare idropulitrice ad alta pressione vicino a parti elettriche</li>
+                        <li>Non utilizzare solventi aggressivi su vernice e plastica</li>
+                        <li>Lubrificare dopo il lavaggio</li>
+                    </ul>
+                </section>
+
+                <!-- IMMAGAZZINAMENTO -->
+                <section class="section" id="immagazzinamento">
+                    <h1 class="section-title">Immagazzinamento</h1>
+                    <div class="steps">
+                        <div class="step">Lavare e asciugare completamente</div>
+                        <div class="step">Svuotare il carburante o aggiungere stabilizzante</div>
+                        <div class="step">Sostituire l'olio motore</div>
+                        <div class="step">Gonfiare i pneumatici alla pressione massima</div>
+                        <div class="step">Scollegare la batteria</div>
+                        <div class="step">Coprire con telo traspirante in luogo asciutto</div>
+                    </div>
+                </section>
+
+                <!-- DIAGNOSTICA -->
+                <section class="section" id="diagnostica">
+                    <h1 class="section-title">Diagnostica</h1>
+                    <div class="img-row">
+                        <div class="manual-img"><img src="images/abs_page_093.png" alt="Spia olio" loading="lazy">
+                            <div class="img-caption">Pag. 93 &mdash; Spia olio</div>
+                        </div>
+                        <div class="manual-img"><img src="images/abs_page_094.png" alt="ABS" loading="lazy">
+                            <div class="img-caption">Pag. 94 &mdash; Spia ABS</div>
+                        </div>
+                    </div>
+                    <div class="img-row">
+                        <div class="manual-img"><img src="images/abs_page_096.png" alt="SMART" loading="lazy">
+                            <div class="img-caption">Pag. 96 &mdash; Chiave SMART</div>
+                        </div>
+                        <div class="manual-img"><img src="images/abs_page_099.png" alt="MIL" loading="lazy">
+                            <div class="img-caption">Pag. 99 &mdash; Spia MIL</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- DATI TECNICI -->
+                <section class="section" id="dati-tecnici">
+                    <h1 class="section-title">Dati Tecnici</h1>
+                    <div class="img-row">
+                        <div class="manual-img"><img src="images/abs_page_127.png" alt="Dati tecnici" loading="lazy">
+                            <div class="img-caption">Pag. 127</div>
+                        </div>
+                        <div class="manual-img"><img src="images/abs_page_128.png" alt="Dati tecnici" loading="lazy">
+                            <div class="img-caption">Pag. 128</div>
+                        </div>
+                    </div>
+                    <div class="specs-grid">
+                        <div class="spec-label">Lunghezza</div>
+                        <div class="spec-value">2.094 mm</div>
+                        <div class="spec-label">Larghezza</div>
+                        <div class="spec-value">730 mm</div>
+                        <div class="spec-label">Altezza</div>
+                        <div class="spec-value">1.196 mm</div>
+                        <div class="spec-label">Interasse</div>
+                        <div class="spec-value">1.422 mm</div>
+                        <div class="spec-label">Serbatoio</div>
+                        <div class="spec-value">9,10 l</div>
+                        <div class="spec-label">Raffreddamento</div>
+                        <div class="spec-value">1,10 l</div>
+                        <div class="spec-label">Carico max</div>
+                        <div class="spec-value">180 kg</div>
+                        <div class="spec-label">Alesaggio &times; corsa</div>
+                        <div class="spec-value">72 &times; 68,5 mm</div>
+                        <div class="spec-label">Compressione</div>
+                        <div class="spec-value">10,5:1</div>
+                        <div class="spec-label">Cilindrata</div>
+                        <div class="spec-value">279 cm&sup3;</div>
+                        <div class="spec-label">Batteria</div>
+                        <div class="spec-value">12V &mdash; 11Ah</div>
+                        <div class="spec-label">Generatore</div>
+                        <div class="spec-value">0,340 kW / 5.000 min&#8315;&sup1;</div>
+                    </div>
+                </section>
+
+                <!-- CATALITICO -->
+                <section class="section" id="catalitico">
+                    <h1 class="section-title">Convertitore Catalitico</h1>
+                    <p>Questo scooter &egrave; dotato di convertitore catalitico che agisce su HC, CO e NOx. Utilizzare
+                        <strong>solo benzina senza piombo</strong>.
+                    </p>
+                    <div class="alert alert-danger">
+                        <div class="alert-title">Attenzione</div>Il convertitore funziona ad alta temperatura.
+                        Parcheggiare
+                        lontano da erba alta, foglie secche o materiali infiammabili.
+                    </div>
+                    <div class="manual-img"><img src="images/abs_page_116.png" alt="Catalitico" loading="lazy">
+                        <div class="img-caption">Pagina 116 &mdash; Convertitore catalitico</div>
+                    </div>
+                </section>
+
+            </div><!-- /content -->
+            <footer id="footer">
+                <p style="font-family:var(--serif);font-style:italic;font-size:1rem;margin-bottom:8px;">Honda SH300i ABS
+                </p>
+                <p>&copy; 2015 Honda Motor Co., Ltd. &mdash; Tutti i diritti riservati.</p>
+                <p
+                    style="margin-top:8px;font-family:var(--mono);font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;">
+                    Immagini estratte dal manuale originale &middot; Consultazione web</p>
+            </footer>
+        </main>
+
+        <script>
+            function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); document.getElementById('overlay').classList.toggle('active') }
+            const sections = document.querySelectorAll('.section[id]'); const navItems = document.querySelectorAll('.nav-item[href^="#"]');
+            function updateActiveNav() { const scrollY = window.scrollY + 90; let current = ''; sections.forEach(s => { if (s.offsetTop <= scrollY) current = s.id }); navItems.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + current) }) }
+            window.addEventListener('scroll', updateActiveNav, { passive: true }); updateActiveNav();
+            const searchData = [
+                { s: "Sicurezza", t: "Casco abbigliamento protettivo", href: "#sicurezza" }, { s: "Sicurezza", t: "Linee guida monossido carbonio", href: "#linee-guida" }, { s: "Sicurezza", t: "Etichette simboli pericolo", href: "#etichette" }, { s: "Sicurezza", t: "Precauzioni guida frenate ABS", href: "#precauzioni" }, { s: "Sicurezza", t: "Accessori modifiche", href: "#accessori" }, { s: "Sicurezza", t: "Carico limiti peso 180 kg", href: "#carico" }, { s: "Descrizione", t: "Ubicazione componenti", href: "#ubicazione" }, { s: "Descrizione", t: "Strumentazione display spie", href: "#strumentazione" }, { s: "Descrizione", t: "Interruttori bloccasterzo", href: "#interruttori" }, { s: "Descrizione", t: "Chiave SMART Honda", href: "#smart-key" }, { s: "Componenti", t: "Sospensioni 5 posizioni", href: "#sospensioni" }, { s: "Componenti", t: "Freni CBS ABS", href: "#freni" }, { s: "Componenti", t: "Raffreddamento antigelo", href: "#raffreddamento" }, { s: "Componenti", t: "Carburante benzina serbatoio", href: "#carburante" }, { s: "Componenti", t: "Olio motore livello", href: "#olio" }, { s: "Componenti", t: "Pneumatici pressione", href: "#pneumatici" }, { s: "Componenti", t: "Candela NGK", href: "#candela" }, { s: "Guida", t: "Controlli pre-guida", href: "#controlli" }, { s: "Guida", t: "Avviamento motore", href: "#avviamento" }, { s: "Guida", t: "Rodaggio 500 km", href: "#rodaggio" }, { s: "Guida", t: "Parcheggio cavalletto", href: "#parcheggio" }, { s: "Manutenzione", t: "Scheda manutenzione", href: "#scheda" }, { s: "Manutenzione", t: "Filtro aria", href: "#filtro-aria" }, { s: "Manutenzione", t: "Olio motore filtro", href: "#olio-motore" }, { s: "Manutenzione", t: "Batteria 12V 11Ah", href: "#batteria" }, { s: "Manutenzione", t: "Fusibili 30A 15A 10A", href: "#fusibili" }, { s: "Manutenzione", t: "Lampadine faro fanali", href: "#lampadine" }, { s: "Diagnostica", t: "Spia olio ABS MIL SMART", href: "#diagnostica" }, { s: "Dati Tecnici", t: "Dimensioni cilindrata specifiche", href: "#dati-tecnici" }, { s: "Catalitico", t: "Convertitore catalitico", href: "#catalitico" },
+            ];
+            const si = document.getElementById('search'); const sr = document.getElementById('search-results');
+            si.addEventListener('input', function () { const q = this.value.toLowerCase().trim(); if (q.length < 2) { sr.classList.remove('active'); return } const m = searchData.filter(d => d.t.toLowerCase().includes(q) || d.s.toLowerCase().includes(q)); sr.innerHTML = m.length === 0 ? '<div class="no-results">Nessun risultato</div>' : m.slice(0, 8).map(r => `<div class="result-item" onclick="location.href='${r.href}'"><div class="result-section">${r.s}</div>${r.t.substring(0, 70)}&hellip;</div>`).join(''); sr.classList.add('active') });
+            si.addEventListener('blur', () => setTimeout(() => sr.classList.remove('active'), 200));
+            si.addEventListener('focus', () => { if (si.value.trim().length >= 2) sr.classList.add('active') });
+            document.addEventListener('keydown', e => { if (e.key === 'Escape') { sr.classList.remove('active'); si.blur(); document.getElementById('sidebar').classList.remove('open'); document.getElementById('overlay').classList.remove('active') } if ((e.ctrlKey || e.metaKey) && e.key === 'k') { e.preventDefault(); si.focus() } });
+        </script>
+</body>
+
+</html>
